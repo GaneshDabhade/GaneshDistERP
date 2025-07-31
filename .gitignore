@@ -1,0 +1,17 @@
+.DS_Store
+*.pyc
+*.egg-info
+*.swp
+tags
+node_modules
+__pycache__
+
+*.pyc
+__pycache__/
+*.swp
+*.swo
+*.log
+*.bak
+*.tmp
+.DS_Store
+node_modules/
