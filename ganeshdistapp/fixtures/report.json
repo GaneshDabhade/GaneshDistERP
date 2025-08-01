@@ -6448,62 +6448,6 @@
   "timeout": 0
  },
  {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2019-11-04 16:28:14.608904",
-  "module": "Selling",
-  "name": "Item-wise Sales History",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Sales Order",
-  "reference_report": null,
-  "report_name": "Item-wise Sales History",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Item-wise Sales History",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Sales User"
-   },
-   {
-    "parent": "Item-wise Sales History",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Sales Manager"
-   },
-   {
-    "parent": "Item-wise Sales History",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Maintenance User"
-   },
-   {
-    "parent": "Item-wise Sales History",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "Item-wise Sales History",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   }
-  ],
-  "timeout": 0
- },
- {
   "add_total_row": 0,
   "add_translate_data": 0,
   "columns": [],
@@ -8075,6 +8019,62 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
+  "modified": "2019-11-04 16:28:14.608904",
+  "module": "Selling",
+  "name": "Item-wise Sales History",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Order",
+  "reference_report": null,
+  "report_name": "Item-wise Sales History",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Item-wise Sales History",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Item-wise Sales History",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Item-wise Sales History",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Item-wise Sales History",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Item-wise Sales History",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
   "modified": "2024-06-19 12:12:15.418799",
   "module": "Buying",
   "name": "Item-wise Purchase History",
@@ -8119,25 +8119,19 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2025-07-17 23:16:19.892044",
+  "modified": "2023-11-08 20:17:05.774211",
   "module": "Accounts",
-  "name": "Sales Partners Commission",
+  "name": "Asset Depreciation Ledger",
   "prepared_report": 0,
-  "query": "SELECT\n   sales_partner as \"Sales Partner:Link / Sales Partner:220\",\n   sum(base_net_total) as \"Invoiced Amount (Excl. Tax):Currency:220\",\n   sum(amount_eligible_for_commission) as \"Amount Eligible for Commission:Currency:220\",\n   sum(total_commission) as \"Total Commission:Currency:170\",\n   sum(total_commission)*100 / sum(amount_eligible_for_commission) as \"Average Commission Rate:Percent:220\"\nFROM\n   (\n      SELECT\n         sales_partner,\n         base_net_total,\n         total_commission,\n         amount_eligible_for_commission\n      FROM\n         `tabSales Invoice` \n      WHERE\n         docstatus = 1\n         AND IFNULL(base_net_total, 0) > 0\n         AND IFNULL(total_commission, 0) > 0\n\n      UNION ALL\n\n      SELECT\n         sales_partner,\n         base_net_total,\n         total_commission,\n         amount_eligible_for_commission\n      FROM\n         `tabPOS Invoice`\n      WHERE\n         docstatus = 1\n         AND IFNULL(base_net_total, 0) > 0\n         AND IFNULL(total_commission, 0) > 0\n   ) AS sub\nGROUP BY\n   sales_partner\nORDER BY\n   \"Total Commission:Currency:120\"",
-  "ref_doctype": "Sales Invoice",
+  "query": null,
+  "ref_doctype": "Asset",
   "reference_report": null,
-  "report_name": "Sales Partners Commission",
+  "report_name": "Asset Depreciation Ledger",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
-    "parent": "Sales Partners Commission",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "Sales Partners Commission",
+    "parent": "Asset Depreciation Ledger",
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Accounts User"
@@ -8157,19 +8151,25 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-11-08 20:17:05.774211",
+  "modified": "2025-07-17 23:16:19.892044",
   "module": "Accounts",
-  "name": "Asset Depreciation Ledger",
+  "name": "Sales Partners Commission",
   "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Asset",
+  "query": "SELECT\n   sales_partner as \"Sales Partner:Link / Sales Partner:220\",\n   sum(base_net_total) as \"Invoiced Amount (Excl. Tax):Currency:220\",\n   sum(amount_eligible_for_commission) as \"Amount Eligible for Commission:Currency:220\",\n   sum(total_commission) as \"Total Commission:Currency:170\",\n   sum(total_commission)*100 / sum(amount_eligible_for_commission) as \"Average Commission Rate:Percent:220\"\nFROM\n   (\n      SELECT\n         sales_partner,\n         base_net_total,\n         total_commission,\n         amount_eligible_for_commission\n      FROM\n         `tabSales Invoice` \n      WHERE\n         docstatus = 1\n         AND IFNULL(base_net_total, 0) > 0\n         AND IFNULL(total_commission, 0) > 0\n\n      UNION ALL\n\n      SELECT\n         sales_partner,\n         base_net_total,\n         total_commission,\n         amount_eligible_for_commission\n      FROM\n         `tabPOS Invoice`\n      WHERE\n         docstatus = 1\n         AND IFNULL(base_net_total, 0) > 0\n         AND IFNULL(total_commission, 0) > 0\n   ) AS sub\nGROUP BY\n   sales_partner\nORDER BY\n   \"Total Commission:Currency:120\"",
+  "ref_doctype": "Sales Invoice",
   "reference_report": null,
-  "report_name": "Asset Depreciation Ledger",
+  "report_name": "Sales Partners Commission",
   "report_script": null,
-  "report_type": "Script Report",
+  "report_type": "Query Report",
   "roles": [
    {
-    "parent": "Asset Depreciation Ledger",
+    "parent": "Sales Partners Commission",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Sales Partners Commission",
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Accounts User"

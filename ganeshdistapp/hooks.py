@@ -289,3 +289,13 @@ fixtures = [
     {"doctype": "DocType", "filters": [["custom", "=", 1]]}
 ]
 
+doc_events = {
+    "Purchase Receipt": {
+        "on_submit": "ganeshdistapp.ganesh_distribution.api.create_invoice_from_pr"
+    },
+    "Payment Entry": {
+        "before_validate": "ganeshdistapp.ganesh_distribution.payment_entry_hooks.auto_fill_upi_reference"
+    }
+}
+
+
